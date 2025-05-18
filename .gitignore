@@ -1,7 +1,8 @@
-.mvn
+.mvn/*
 .vscode
 postgres_data
 target
+
 
 HELP.md
 
