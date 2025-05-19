@@ -15,7 +15,7 @@ Utiliza Spring Data JPA para la capa de persistencia, facilitando la interacció
     *   Spring Boot DevTools (para mejorar la experiencia de desarrollo)
 *   **Construción y Dependencias**: Apache Maven
 *   **Contenerización**: Docker, Docker Compose
-*   **Base de Datos**: [Especifica la base de datos que estás utilizando, ej: PostgreSQL, MySQL, H2 (para desarrollo)]
+*   **Base de Datos**: PostgreSQL
 
 ## Requisitos Previos
 
@@ -32,8 +32,7 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
 
 1.  **Clonar el Repositorio (si aplica)**
     ```bash
-    # git clone <URL_DEL_REPOSITORIO>
-    # cd <NOMBRE_DEL_DIRECTORIO_DEL_PROYECTO>
+    # git clone https://github.com/drojaslopez/apirestjava
     ```
 
 2.  **Construir la Aplicación (Opcional si tu `docker-compose.yml` lo hace)**

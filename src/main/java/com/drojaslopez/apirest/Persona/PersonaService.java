@@ -2,13 +2,14 @@ package com.drojaslopez.apirest.Persona;
 
 import org.springframework.stereotype.Service;
 
+import lombok.RequiredArgsConstructor;
+
 @Service
+@RequiredArgsConstructor
 public class PersonaService {
     private final PersonaRepository personaRepository;
 
-    public PersonaService(PersonaRepository personaRepository) {
-        this.personaRepository = personaRepository;
-    }
+    
 
     public Iterable<Persona> getAllPersonas() {
         return personaRepository.findAll();
@@ -34,6 +35,10 @@ public class PersonaService {
             return personaRepository.save(persona);
         }
         return null;
+    }
+
+    public Persona findByNombre(String nombre) {
+        return personaRepository.findByNombre(nombre);
     }
 
 

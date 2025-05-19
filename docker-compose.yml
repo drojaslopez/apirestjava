@@ -19,7 +19,7 @@ services:
 
     # Puertos: mapea el puerto 5432 (dentro del contenedor) al 5434 (en tu máquina host)
     ports:
-      - "5432:5432" # host:contenedor
+      - "5433:5432" # host:contenedor
 
     # Volúmenes: mapea una carpeta local a la ruta de datos de PostgreSQL en el contenedor
     volumes:
