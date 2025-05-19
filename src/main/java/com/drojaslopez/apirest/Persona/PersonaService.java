@@ -8,7 +8,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 public class PersonaService {
     private final PersonaRepository personaRepository;
-
     
 
     public Iterable<Persona> getAllPersonas() {

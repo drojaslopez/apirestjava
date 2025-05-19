@@ -10,9 +10,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.NoSuchElementException;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 @RequiredArgsConstructor
 public class PersonaController {
 
+    @Autowired
     private PersonaService personaService;
 
     @GetMapping("/")
@@ -38,10 +40,6 @@ public class PersonaController {
         }
 
         try {
-            if (persona.getRut() == null || persona.getNombre() == null || persona.getApellido() == null
-                    || persona.getEdad() == 0) {
-                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
-            }
             personaService.savePersona(persona);
             return ResponseEntity.status(HttpStatus.CREATED).build();
         } catch (NoSuchElementException e) {
@@ -78,21 +76,22 @@ public class PersonaController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
-
-    @GetMapping("/nombre/{nombre}")
-    public ResponseEntity<Persona> obtenerPersonaPorNombre(@PathVariable String nombre) {
+    @DeleteMapping("/{rut}")
+    public ResponseEntity<Void> eliminarPersona(@PathVariable String rut) {
         try {
-            Persona persona = personaService.findByNombre(nombre);
-            if (persona == null) {
+            if (personaService.getPersonaById(rut) == null) {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
-            return ResponseEntity.ok(persona);
+            personaService.deletePersona(rut);
+            return ResponseEntity.status(HttpStatus.OK).build();
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+
+   
 
     @PutMapping("/actualizar")
     public ResponseEntity<Persona> actualizarPersona(@RequestBody Persona persona) {
@@ -101,6 +100,18 @@ public class PersonaController {
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
             }
             personaService.updatePersona(persona.getRut(), persona);
+            return ResponseEntity.ok(persona);
+        } catch (NoSuchElementException e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
+    }
+
+     @GetMapping("/nombre/{nombre}")
+    public ResponseEntity<Persona> obtenerPersonaPorNombre(@PathVariable String nombre) {
+        try {
+            Persona persona = personaService.findByNombre(nombre);            
             return ResponseEntity.ok(persona);
         } catch (NoSuchElementException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

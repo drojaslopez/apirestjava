@@ -1,8 +1,8 @@
-# Mi Proyecto API REST (Nombre del Proyecto)
+# API REST 
 
 ## Descripción
 
-Este proyecto es una API RESTful desarrollada con el framework Spring Boot. Está diseñada para [describe brevemente el propósito principal de la API, por ejemplo: "gestionar usuarios y productos", "proveer datos para una aplicación móvil", etc.].
+Este proyecto es una API RESTful desarrollada con el framework Spring Boot. Está diseñada para "gestionar usuarios " y mostrar conocimiento para el desarrollo de api rest.
 
 Utiliza Spring Data JPA para la capa de persistencia, facilitando la interacción con una base de datos relacional. El proyecto está configurado para ser desplegado y gestionado fácilmente mediante Docker y Docker Compose.
 
@@ -35,12 +35,12 @@ Sigue estos pasos para configurar y ejecutar el proyecto en tu entorno local:
     # git clone https://github.com/drojaslopez/apirestjava
     ```
 
-2.  **Construir la Aplicación (Opcional si tu `docker-compose.yml` lo hace)**
+2.  <!--**Construir la Aplicación (Opcional si tu `docker-compose.yml` lo hace)**
     Si necesitas empaquetar la aplicación en un archivo JAR antes de levantar los contenedores:
     ```bash
     mvn clean package
     ```
-    Esto generará el archivo `.jar` en el directorio `target/`.
+    Esto generará el archivo `.jar` en el directorio `target/`.-->
 
 3.  **Levantar los Servicios con Docker Compose**
     Este comando construirá las imágenes (si es necesario) e iniciará los contenedores definidos en tu archivo `docker-compose.yml` (generalmente la aplicación y la base de datos) en segundo plano.
@@ -92,3 +92,7 @@ Para más detalles sobre las tecnologías utilizadas, consulta la documentación
 Este README proporciona una estructura más completa. Recuerda reemplazar los placeholders como "[Nombre del Proyecto]", "[describe brevemente el propósito principal de la API...]", "[Especifica la base de datos...]" y la lista de endpoints con la información específica de tu proyecto.
 
 Avísame si quieres ajustar alguna sección o añadir más detalles.
+
+
+
+docker-compose up -d

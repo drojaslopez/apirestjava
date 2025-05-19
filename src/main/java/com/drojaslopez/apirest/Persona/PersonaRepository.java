@@ -8,8 +8,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonaRepository extends JpaRepository<Persona, String> {
 
-    @Query(value="SELECT rut, nombre,apellido,edad FROM Persona p WHERE p.nombre = :nombre",nativeQuery = true)
-    Persona findByNombre(@Param ("nombre") String nombre);
-
+    @Query(value = "SELECT rut, nombre,apellido,edad FROM Persona p WHERE p.nombre = :nombre", nativeQuery = true)
+    Persona findByNombre(@Param("nombre") String nombre);
 
 }
